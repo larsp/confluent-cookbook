@@ -1,0 +1,58 @@
+#!/bin/sh
+#
+# chkconfig: 345 99 01
+# description: <%= @name %>
+#
+# File : <%= @name %>
+#
+# Description: Starts and stops confluent <%= @name %>
+#
+
+source /etc/rc.d/init.d/functions
+
+USER=confluent
+
+case "$1" in
+
+  start)
+    echo -n "Starting <%= @name %>:"
+    /sbin/runuser $USER -c "nohup <%= @start_script %> /etc/kafka/<%= @configuration %> > /var/log/kafka/<%= @name %>.out 2> /var/log/kafka/<%= @name %>.err &"
+    echo " done."
+    exit 0
+    ;;
+
+  stop)
+    echo -n "Stopping <%= @name %>:"
+    /sbin/runuser $USER -c "ps -ef | grep <%= @process %> | grep -v grep | awk '{print \$2}' | xargs kill"
+    echo " done."
+    exit 0
+    ;;
+  hardstop)
+    echo -n "Stopping (hard) <%= @name %>: "
+    /sbin/runuser $USER -c "ps -ef | grep <%= @process %> | grep -v grep | awk '{print \$2}' | xargs kill -9"
+    echo " done."
+    exit 0
+    ;;
+
+  status)
+    pid=`ps -ef | grep <%= @process %> | grep -v grep | awk '{print $2}'`
+    if [ "$pid" = "" ] ; then
+      echo "Stopped"
+      exit 3
+    else
+      echo "Running $pid"
+      exit 0
+    fi
+    ;;
+
+  restart)
+    stop
+    start
+    ;;
+
+  *)
+    echo "Usage: <%= @name %> {start|stop|hardstop|status|restart}"
+    exit 1
+    ;;
+
+esac
