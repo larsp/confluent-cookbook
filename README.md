@@ -5,7 +5,7 @@ This cookbook is using the confluent `rpm` and `deb` repositories to install the
 It comes with one recipe: `confluent::default`.
 
 ## Kafka and ZooKeeper configuration
-Instead of maintaing configuration templates (which have change in the past) chef configuration properties will be added to `server.properties` and `zookeeper.properties` files.
+Instead of maintaing configuration templates, chef configuration properties will be added to `server.properties` and `zookeeper.properties` files.
 
 Example Kafka:
 ```ruby
@@ -38,7 +38,7 @@ clientPort=2181
 Right now only Kafka and ZooKeeper can be configured. This will probably change since it is "work in progress".
 
 ## Vagrant
-In order to be able to run vagrant you need to run `berks init` and you have to install `vagrant-berkshelf` via `vagrant plugin install vagrant-berkshelf`. Afterwards run `vagrant up`
+In order to be able to run vagrant you need to run `berks init` and you have to install `vagrant-berkshelf` via `vagrant plugin install vagrant-berkshelf`. Afterwards run `vagrant up`.
 
 ## Supported OS Distributions
 Right now it has been tested with:
