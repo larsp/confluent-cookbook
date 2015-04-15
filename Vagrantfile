@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
     config.omnibus.chef_version = 'latest'
     config.berkshelf.enabled = true
     config.vm.box = 'chef/centos-6.5'
+    #config.vm.box = 'chef/ubuntu-14.04'
     config.vm.network :private_network, type: 'dhcp'
     config.vm.network :forwarded_port, guest: 9092, host: 9092   # Kafka
     config.vm.network :forwarded_port, guest: 2181, host: 2181   # ZooKeeper
@@ -16,26 +17,14 @@ Vagrant.configure("2") do |config|
     config.vm.provision :chef_solo do |chef|
         chef.json = {
             :run_list => [
+    #            "recipe[apt]",
                 "recipe[java]",
                 "recipe[confluent]"
             ],
-            :java => java_config
+            :java => {
+                :jdk_version => "7",
+                :install_flavor => "openjdk",
+            }
         }
     end
-end
-
-
-def java_config
-    {
-        :oracle => {
-            :accept_oracle_download_terms => true
-        },
-        :oracle_rpm => {
-            :type => "jdk",
-        },
-        :arch => "x86_64",
-        :jdk_version => "8",
-        :install_flavor => "oracle",
-        :alternatives_priority => 20000
-    }
 end
