@@ -28,9 +28,11 @@ end
 
 
 service "kafka" do
+    supports :restart => true, :status => true
     action [:enable, :start]
 end
 
 service "zookeeper" do
+    supports :restart => true, :status => true
     action [:enable, :start]
 end
