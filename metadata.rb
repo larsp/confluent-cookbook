@@ -1,4 +1,4 @@
-name             'confluent'
+name             'confluent-cookbook'
 maintainer       'Lars Pfannenschmidt'
 maintainer_email 'lars@mobilecologne.de'
 license          'Apache License Version 2.0'
