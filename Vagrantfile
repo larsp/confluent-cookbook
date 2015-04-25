@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
             :run_list => [
                 "recipe[apt]",
                 "recipe[java]",
-                "recipe[confluent]"
+                "recipe[confluent-cookbook]"
             ],
             :java => {
                 :jdk_version => "7",

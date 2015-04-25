@@ -2,7 +2,7 @@
 This cookbook is using the confluent `rpm` and `deb` repositories to install the `confluent-platform` package. It will create a user `confluent` and init scripts for `kafka` and `zookeeper`.  
 
 ## Recipe
-It comes with one recipe: `confluent::default`.
+It comes with one recipe: `confluent-cookbook::default`.
 
 ## Kafka and ZooKeeper configuration
 Instead of maintaing configuration templates, chef configuration properties will be added to `server.properties` and `zookeeper.properties` files.

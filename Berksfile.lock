@@ -1,6 +1,6 @@
 DEPENDENCIES
   apt
-  confluent
+  confluent-cookbook
     path: .
     metadata: true
   java
@@ -8,9 +8,9 @@ DEPENDENCIES
 
 GRAPH
   apt (2.7.0)
-  confluent (0.1.0)
+  confluent-cookbook (0.1.1)
     apt (>= 0.0.0)
     java (>= 0.0.0)
     yum (>= 0.0.0)
   java (1.31.0)
-  yum (3.5.4)
+  yum (3.6.0)
