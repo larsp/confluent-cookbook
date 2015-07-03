@@ -2,10 +2,10 @@
 This cookbook is using the confluent `rpm` and `deb` repositories to install the `confluent-platform` package. It will create a user `confluent` and init scripts for `kafka` and `zookeeper`.  
 
 ## Recipe
-It comes with one recipe: `confluent-cookbook::default`.
+It comes with two recipes: `confluent-cookbook::default` and `confluent-cookbook::schema-registry`.
 
-## Kafka and ZooKeeper configuration
-Instead of maintaing configuration templates, chef configuration properties will be added to `server.properties` and `zookeeper.properties` files.
+## Configuration
+Instead of maintaining configuration templates, chef configuration properties will be added as `server.properties`, `zookeeper.properties`  and `schema-registry.properties` files.
 
 Example Kafka:
 ```ruby
@@ -35,7 +35,7 @@ clientPort=2181
 ```
 
 ## Other `confluent-platform` configurations
-Right now only Kafka and ZooKeeper can be configured. This will probably change since it is "work in progress".
+Right now only Kafka, ZooKeeper and the Schema-Registry can be configured. This will probably change since it is "work in progress".
 
 ## Vagrant
 In order to be able to run vagrant you need to run `berks init` and you have to install `vagrant-berkshelf` via `vagrant plugin install vagrant-berkshelf`. Afterwards run `vagrant up`.
