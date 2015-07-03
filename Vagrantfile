@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
     config.vm.network :private_network, type: 'dhcp'
     config.vm.network :forwarded_port, guest: 9092, host: 9092   # Kafka
     config.vm.network :forwarded_port, guest: 2181, host: 2181   # ZooKeeper
+    config.vm.network :forwarded_port, guest: 8081, host: 8081   # Schema Registry
+
 
     config.vm.provider "virtualbox" do |v|
         v.memory = 1024
@@ -19,7 +21,8 @@ Vagrant.configure("2") do |config|
             :run_list => [
                 "recipe[apt]",
                 "recipe[java]",
-                "recipe[confluent-cookbook]"
+                "recipe[confluent-cookbook]",
+                "recipe[confluent-cookbook::schema-registry]"
             ],
             :java => {
                 :jdk_version => "7",
@@ -28,7 +31,8 @@ Vagrant.configure("2") do |config|
             :confluent => {
                 :kafka => {
                     "server.properties" => {
-                        "advertised.host.name" => "localhost"
+                        "advertised.host.name" => "localhost",
+                        "log.cleaner.enable" => "true"
                     }
                 }
             }

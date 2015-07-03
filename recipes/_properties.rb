@@ -15,3 +15,12 @@ template "/etc/kafka/server.properties" do
     variables({:properties => node["confluent"]["kafka"]["server.properties"]})
     notifies :restart, "service[kafka]"
 end
+
+template "/etc/kafka/schema-registry.properties" do
+    source "properties.erb"
+    owner 'confluent'
+    group 'confluent'
+    mode '644'
+    variables({:properties => node["confluent"]["kafka"]["schema-registry.properties"]})
+    notifies :restart, "service[schema-registry]"
+end

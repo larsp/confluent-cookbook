@@ -23,3 +23,9 @@ default["confluent"]["kafka"]["server.properties"]["zookeeper.connection.timeout
 default["confluent"]["kafka"]["zookeeper.properties"]["dataDir"] = "/tmp/zookeeper"
 default["confluent"]["kafka"]["zookeeper.properties"]["clientPort"] = "2181"
 default["confluent"]["kafka"]["zookeeper.properties"]["maxClientCnxns"] = "0"
+
+# schema registry-defaults
+default["confluent"]["kafka"]["schema-registry.properties"]["port"] = "8081"
+default["confluent"]["kafka"]["schema-registry.properties"]["kafkastore.connection.url"] = "localhost:2181"
+default["confluent"]["kafka"]["schema-registry.properties"]["kafkastore.topic"] = "_schemas"
+default["confluent"]["kafka"]["schema-registry.properties"]["debug"] = "false"
