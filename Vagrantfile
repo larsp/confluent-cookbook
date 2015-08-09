@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
     config.vm.network :forwarded_port, guest: 9092, host: 9092   # Kafka
     config.vm.network :forwarded_port, guest: 2181, host: 2181   # ZooKeeper
     config.vm.network :forwarded_port, guest: 8081, host: 8081   # Schema Registry
+    config.vm.network :forwarded_port, guest: 8082, host: 8082   # REST Proxy
 
 
     config.vm.provider "virtualbox" do |v|
@@ -22,7 +23,8 @@ Vagrant.configure("2") do |config|
                 "recipe[apt]",
                 "recipe[java]",
                 "recipe[confluent-cookbook]",
-                "recipe[confluent-cookbook::schema-registry]"
+                "recipe[confluent-cookbook::schema-registry]",
+                "recipe[confluent-cookbook::kafka-rest]"
             ],
             :java => {
                 :jdk_version => "7",

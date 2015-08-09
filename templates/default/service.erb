@@ -20,12 +20,11 @@ start(){
 
     if [ $pid ] ; then
         echo "<%= @name %> already running: $pid"
-        exit 1
+    else
+        echo -n "Starting <%= @name %>:"
+        su -s /bin/bash -c "nohup <%= @start_script %> /etc/kafka/<%= @configuration %> > /var/log/kafka/<%= @name %>.out 2> /var/log/kafka/<%= @name %>.err &" $USER
+        echo " done."
     fi
-
-    echo -n "Starting <%= @name %>:"
-    su -s /bin/bash -c "nohup <%= @start_script %> /etc/kafka/<%= @configuration %> > /var/log/kafka/<%= @name %>.out 2> /var/log/kafka/<%= @name %>.err &" $USER
-    echo " done."
 }
 
 stop(){
@@ -33,12 +32,11 @@ stop(){
 
     if ! [ $pid ] ; then
         echo "<%= @name %> already stopped"
-        exit 1
+    else
+        echo -n "Stopping <%= @name %>:"
+        su -s /bin/bash -c "ps -ef | grep <%= @process %> | grep -v grep | awk '{print \$2}' | xargs kill" $USER
+        echo " done."
     fi
-
-    echo -n "Stopping <%= @name %>:"
-    su -s /bin/bash -c "ps -ef | grep <%= @process %> | grep -v grep | awk '{print \$2}' | xargs kill" $USER
-    echo " done."
 }
 
 status(){
