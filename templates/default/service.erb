@@ -20,7 +20,7 @@ start(){
 
     if [ $pid ] ; then
         echo "<%= @name %> already running: $pid"
-        exit 1
+        return 1
     fi
 
     echo -n "Starting <%= @name %>:"
@@ -33,7 +33,7 @@ stop(){
 
     if ! [ $pid ] ; then
         echo "<%= @name %> already stopped"
-        exit 1
+        return 1
     fi
 
     echo -n "Stopping <%= @name %>:"
@@ -45,10 +45,10 @@ status(){
     pid=`pid`
     if [ "$pid" = "" ] ; then
         echo "Stopped"
-        exit 3
+        return 3
     else
         echo "Running $pid"
-        exit 0
+        return 0
     fi
 }
 
