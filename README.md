@@ -35,7 +35,7 @@ clientPort=2181
 ```
 
 ## Other `confluent-platform` configurations
-Right now Kafka, ZooKeeper, the Schema-Registry and the Kafka REST can be configured.
+Right now Kafka, ZooKeeper, the Schema-Registry and Kafka REST can be configured.
 
 ## Vagrant
 In order to be able to run vagrant you need to run `berks init` and you have to install `vagrant-berkshelf` via `vagrant plugin install vagrant-berkshelf`. Afterwards run `vagrant up`.
