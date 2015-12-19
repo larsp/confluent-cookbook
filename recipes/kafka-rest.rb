@@ -5,7 +5,7 @@ template "/etc/init.d/kafka-rest" do
     mode "755"
     variables({
         :name => "kafka-rest",
-        :process => "io.confluent.kafkarest.Main",
+        :process => "io.confluent.kafkarest.KafkaRestMain",
         :configuration => "kafka-rest.properties",
         :start_script => "kafka-rest-start"
         })

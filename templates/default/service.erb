@@ -34,7 +34,7 @@ stop(){
         echo "<%= @name %> already stopped"
     else
         echo -n "Stopping <%= @name %>:"
-        su -s /bin/bash -c "ps -ef | grep <%= @process %> | grep -v grep | awk '{print \$2}' | xargs kill" $USER
+        su -s /bin/bash -c "ps -ef | grep <%= @process %> | grep -v grep | awk '{print \$2}' | xargs kill -SIGTERM" $USER
         echo " done."
     fi
 }

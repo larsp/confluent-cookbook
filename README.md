@@ -1,8 +1,8 @@
 # confluent.io Cookbook
-This cookbook is using the confluent `rpm` and `deb` repositories to install the `confluent-platform` package. It will create a user `confluent` and init scripts for `kafka` and `zookeeper`.  
+This cookbook is using the confluent `rpm` and `deb` repositories to install the `confluent-platform` v2 packages. It will create a user `confluent` and init scripts for `kafka` `zookeeper`, `schema-registry` and `kafka-rest`.  
 
 ## Recipe
-It comes with three recipes: `confluent-cookbook::default`, `confluent-cookbook::schema-registry` and `confluent-cookbook::kafka-rest`.
+It comes with multiple recipes: `confluent-cookbook::default`, `confluent-cookbook::zookeeper`,`confluent-cookbook::kafka` `confluent-cookbook::kafka-schema-registry` and `confluent-cookbook::kafka-rest`.
 
 ## Configuration
 Instead of maintaining configuration templates, chef configuration properties will be added as `server.properties`, `zookeeper.properties` , `schema-registry.properties` and `kafka-rest.properties` files.
@@ -35,14 +35,14 @@ clientPort=2181
 ```
 
 ## Other `confluent-platform` configurations
-Right now Kafka, ZooKeeper, the Schema-Registry and Kafka REST can be configured.
+Right now Kafka, ZooKeeper, the Schema-Registry and Kafka-REST can be configured.
 
 ## Vagrant
 In order to be able to run vagrant you need to run `berks init` and you have to install `vagrant-berkshelf` via `vagrant plugin install vagrant-berkshelf`. Afterwards run `vagrant up`.
 
 ## Supported OS Distributions
 Right now it has been tested with:
- - CentOS 6.5
+ - CentOS 7.x
  - Ubuntu 14.04 (where it seems to hang sometimes during installation)
 
 ## JRE

@@ -1,5 +1,5 @@
-default["confluent"]["version"] = "1.0"
-default["confluent"]["scala_version"] = "2.10.4"
+default["confluent"]["version"] = "2.0"
+default["confluent"]["scala_version"] = "2.11.7"
 
 # kafka defaults
 default["confluent"]["kafka"]["server.properties"]["broker.id"] = "0"
@@ -18,6 +18,7 @@ default["confluent"]["kafka"]["server.properties"]["log.retention.check.interval
 default["confluent"]["kafka"]["server.properties"]["log.cleaner.enable"] = "false"
 default["confluent"]["kafka"]["server.properties"]["zookeeper.connect"] = "localhost:2181"
 default["confluent"]["kafka"]["server.properties"]["zookeeper.connection.timeout.ms"] = "6000"
+default["confluent"]["kafka"]["server.properties"]["confluent.support.metrics.enable"] = "false"
 
 # zookeeper defaults
 default["confluent"]["kafka"]["zookeeper.properties"]["dataDir"] = "/tmp/zookeeper"
