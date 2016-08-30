@@ -4,17 +4,17 @@ case node['platform_family']
 when 'rhel'
     include_recipe 'yum'
     yum_repository 'confluent' do
-        description "Confluent repository for #{version} packages"
-        baseurl "http://packages.confluent.io/rpm/#{version}"
-        gpgkey "http://packages.confluent.io/rpm/#{version}/archive.key"
+        description "Repository for #{version} of Confluent packages"
+        baseurl node.attribute['confluent']['repository']['rpm']['url']
+        gpgkey node.attribute['confluent']['repository']['rpm']['key']
         action :create
     end
 
 when 'debian'
     apt_repository 'confluent' do
-        uri "http://packages.confluent.io/deb/#{version}"
+        uri node.attribute['confluent']['repository']['deb']['url']
         components ['stable', 'main']
         arch 'all'
-        key "http://packages.confluent.io/deb/#{version}/archive.key"
+        key node.attribute['confluent']['repository']['deb']['key']
     end
 end
