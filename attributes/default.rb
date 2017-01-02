@@ -1,5 +1,5 @@
-default["confluent"]["version"] = "2.0"
-default["confluent"]["scala_version"] = "2.11.7"
+default["confluent"]["version"] = "3.0"
+default["confluent"]["scala_version"] = "2.11"
 
 # Confluent repository defaults
 default["confluent"]["repository"]["rpm"]["url"] = "http://packages.confluent.io/rpm/#{node["confluent"]["version"]}"
