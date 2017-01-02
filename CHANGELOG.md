@@ -13,3 +13,7 @@ Added Schema-Registry service and configuration.
 # 0.3.0
 
 Added Kafka REST service and configuration.
+
+# 0.5.0
+
+Updated for Confluent platform 3.0.
