@@ -9,13 +9,14 @@ when 'rhel'
         gpgkey node.attribute['confluent']['repository']['rpm']['key']
         action :create
     end
-    yum_repository 'confluent_dist' do
-        description "Repository for #{version} of Confluent (dist) packages"
-        baseurl "#{node.attribute['confluent']['repository']['rpm']['url']}/#{node['platform_version'].to_i}"
-        gpgkey node.attribute['confluent']['repository']['rpm']['key']
-        action :create
+    if version >= '3.0'
+        yum_repository 'confluent_dist' do
+            description "Repository for #{version} of Confluent (dist) packages"
+            baseurl "#{node.attribute['confluent']['repository']['rpm']['url']}/#{node['platform_version'].to_i}"
+            gpgkey node.attribute['confluent']['repository']['rpm']['key']
+            action :create
+        end
     end
-    
 
 when 'debian'
     apt_repository 'confluent' do
