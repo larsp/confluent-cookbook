@@ -1,27 +1,30 @@
-template "/etc/init.d/kafka" do
-    source "service.erb"
-    owner 'confluent'
-    group 'confluent'
-    mode "755"
-    variables({
-        :name => "kafka",
-        :process => "io.confluent.support.metrics.SupportedKafka",
-        :configuration => "server.properties",
-        :start_script => "kafka-server-start"
-        })
-    notifies :restart, "service[kafka]"
-end
-
-template "/etc/kafka/server.properties" do
-    source "properties.erb"
+template '/etc/kafka/server.properties' do
+    source 'server.properties.erb'
     owner 'confluent'
     group 'confluent'
     mode '644'
-    variables({:properties => node["confluent"]["kafka"]["server.properties"]})
-    notifies :restart, "service[kafka]"
+    variables({:properties => node['confluent']['kafka']['server.properties']})
+    notifies :restart, 'service[kafka]'
 end
 
-service "kafka" do
+template '/usr/lib/systemd/system/kafka.service' do
+    source 'kafka.service.erb'
+    owner 'root'
+    group 'root'
+    mode '0644'
+    variables({
+                  :user => 'root',
+                  :configuration => '/etc/kafka/server.properties',
+                  :start_script => '/usr/bin/kafka-server-start',
+                  :process => 'io.confluent.support.metrics.SupportedKafka'
+              })
+    notifies :restart, 'service[kafka]'
+end
+
+execute 'systemctl daemon-reload'
+
+service 'kafka' do
+    provider Chef::Provider::Service::Systemd
     supports :restart => true, :status => true
     action [:enable, :start]
 end

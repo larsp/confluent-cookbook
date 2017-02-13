@@ -17,3 +17,7 @@ Added Kafka REST service and configuration.
 # 0.5.0
 
 Updated for Confluent platform 3.0.
+
+# 0.5.1
+
+Converted kafka from SysV to systemd service

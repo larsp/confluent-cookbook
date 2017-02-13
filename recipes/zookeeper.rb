@@ -13,7 +13,7 @@ template "/etc/init.d/zookeeper" do
 end
 
 template "/etc/kafka/zookeeper.properties" do
-    source "properties.erb"
+    source "server.properties.erb"
     owner 'confluent'
     group 'confluent'
     mode '644'

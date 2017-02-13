@@ -1,0 +1,9 @@
+[Unit]
+After=consul-template.service
+Wants=consul-template.service
+
+[Service]
+User=<%= @user %>
+ExecStart=<%= @start_script %> <%= @configuration %>
+Restart=on-failure
+RestartSec=5

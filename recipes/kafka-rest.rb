@@ -13,7 +13,7 @@ template "/etc/init.d/kafka-rest" do
 end
 
 template "/etc/kafka/kafka-rest.properties" do
-    source "properties.erb"
+    source "server.properties.erb"
     owner 'confluent'
     group 'confluent'
     mode '644'

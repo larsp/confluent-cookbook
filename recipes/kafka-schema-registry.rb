@@ -13,7 +13,7 @@ template "/etc/init.d/kafka-schema-registry" do
 end
 
 template "/etc/kafka/schema-registry.properties" do
-    source "properties.erb"
+    source "server.properties.erb"
     owner 'confluent'
     group 'confluent'
     mode '644'
