@@ -1,6 +1,7 @@
 [Unit]
-After=consul-template.service
-Wants=consul-template.service
+<% @service_unit.each do |k, v| -%>
+<%= k %>=<%= v %>
+<% end -%>
 
 [Service]
 User=<%= @user %>

@@ -26,6 +26,8 @@ default["confluent"]["kafka"]["server.properties"]["zookeeper.connect"] = "local
 default["confluent"]["kafka"]["server.properties"]["zookeeper.connection.timeout.ms"] = "6000"
 default["confluent"]["kafka"]["server.properties"]["confluent.support.metrics.enable"] = "false"
 
+default["confluent"]["kafka"]["service_unit"] = {}
+
 # zookeeper defaults
 default["confluent"]["kafka"]["zookeeper.properties"]["dataDir"] = "/tmp/zookeeper"
 default["confluent"]["kafka"]["zookeeper.properties"]["clientPort"] = "2181"

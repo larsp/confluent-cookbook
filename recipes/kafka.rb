@@ -16,7 +16,8 @@ template '/usr/lib/systemd/system/kafka.service' do
                   :user => 'root',
                   :configuration => '/etc/kafka/server.properties',
                   :start_script => '/usr/bin/kafka-server-start',
-                  :process => 'io.confluent.support.metrics.SupportedKafka'
+                  :process => 'io.confluent.support.metrics.SupportedKafka',
+                  :service_unit => node['confluent']['kafka']['service_unit']
               })
     notifies :restart, 'service[kafka]'
 end
