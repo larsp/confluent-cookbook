@@ -6,5 +6,5 @@
 [Service]
 User=<%= @user %>
 ExecStart=<%= @start_script %> <%= @configuration %>
-Restart=on-failure
+Restart=always
 RestartSec=5
