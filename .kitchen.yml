@@ -7,9 +7,21 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
-  - name: centos-6.5
+  - name: centos-7.2
 
 suites:
   - name: default
     run_list:
-    attributes:
+    - recipe[java::default]
+    - recipe[confluent-cookbook::default]
+    - recipe[confluent-cookbook::zookeeper]
+    - recipe[confluent-cookbook::kafka]
+    attributes: {
+      java: {
+        install_flavor: "oracle",
+        jdk_version: "8",
+        oracle: {
+          accept_oracle_download_terms: true
+        }
+      }
+    }

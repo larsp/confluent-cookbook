@@ -1,8 +1,5 @@
-[Install]
-WantedBy=multi-user.target
-
 [Unit]
-Description=Kafka
+Description=Apache Kafka - Distributed Streaming Platform
 <% @service_unit.each do |k, v| -%>
 <%= k %>=<%= v %>
 <% end -%>
@@ -12,3 +9,6 @@ User=<%= @user %>
 ExecStart=<%= @start_script %> <%= @configuration %>
 Restart=always
 RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
