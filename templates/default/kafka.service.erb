@@ -1,4 +1,8 @@
+[Install]
+WantedBy=multi-user.target
+
 [Unit]
+Description=Kafka
 <% @service_unit.each do |k, v| -%>
 <%= k %>=<%= v %>
 <% end -%>
