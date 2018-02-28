@@ -1,11 +1,11 @@
-default["confluent"]["version"] = "3.0"
+default["confluent"]["version"] = "4.0"
 default["confluent"]["scala_version"] = "2.11"
 
 # Confluent repository defaults
-default["confluent"]["repository"]["rpm"]["url"] = "http://packages.confluent.io/rpm/#{node["confluent"]["version"]}"
-default["confluent"]["repository"]["rpm"]["key"] = "http://packages.confluent.io/rpm/#{node["confluent"]["version"]}/archive.key"
-default["confluent"]["repository"]["deb"]["url"] = "http://packages.confluent.io/deb/#{node["confluent"]["version"]}"
-default["confluent"]["repository"]["deb"]["key"] = "http://packages.confluent.io/deb/#{node["confluent"]["version"]}/archive.key"
+default["confluent"]["repository"]["rpm"]["url"] = "https://packages.confluent.io/rpm/#{node["confluent"]["version"]}"
+default["confluent"]["repository"]["rpm"]["key"] = "https://packages.confluent.io/rpm/#{node["confluent"]["version"]}/archive.key"
+default["confluent"]["repository"]["deb"]["url"] = "https://packages.confluent.io/deb/#{node["confluent"]["version"]}"
+default["confluent"]["repository"]["deb"]["key"] = "https://packages.confluent.io/deb/#{node["confluent"]["version"]}/archive.key"
 
 # kafka defaults
 default["confluent"]["kafka"]["server.properties"]["broker.id"] = "0"

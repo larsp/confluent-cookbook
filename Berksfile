@@ -4,4 +4,4 @@ metadata
 
 cookbook "java"
 cookbook "apt"
-cookbook "yum"
+#cookbook "yum"

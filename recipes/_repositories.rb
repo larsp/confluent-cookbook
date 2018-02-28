@@ -21,8 +21,9 @@ when 'rhel'
 when 'debian'
     apt_repository 'confluent' do
         uri node.attribute['confluent']['repository']['deb']['url']
+	distribution nil
         components ['stable', 'main']
-        arch 'all'
+        arch 'amd64'
         key node.attribute['confluent']['repository']['deb']['key']
     end
 end
