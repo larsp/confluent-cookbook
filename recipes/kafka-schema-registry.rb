@@ -7,7 +7,7 @@ template "/etc/init.d/kafka-schema-registry" do
         :name => "kafka-schema-registry",
         :process => "io.confluent.kafka.schemaregistry.rest.SchemaRegistryMain",
         :configuration => "schema-registry.properties",
-        :start_script => "schema-registry-start"
+        :start_script => "env LOG_DIR=/var/log/kafka schema-registry-start"
         })
     notifies :restart, "service[kafka-schema-registry]"
 end
